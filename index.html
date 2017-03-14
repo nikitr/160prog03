@@ -11,5 +11,50 @@
 
 <h2>Recipe Table</h2>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#getReq").click(function(){
+        $.get("https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes", function(data, status){
+            // alert("Data: " + data + "\nStatus: " + status);
+            $("#result").text(JSON.stringify(data)  );
+        });
+      });
+    });
+</script>
+</head>
+<div>
+  <br>
+<button id="getReq">Send HTTP GET request to a AWS and get result</button>
+<br>
+</div>
+<div id="result">
+  Result
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#getReq").click(function(){
+	  $.ajax({
+		  url: "https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes",
+		  type: "POST",
+		  data: JSON.stringify({"TableName": "Recipes", "Item": {"RecipeName":"Scrambled Eggs", "Ingredients":"Eggs", "Directions":"Crack Eggs\nScramble Eggs\nCook Eggs"}}),
+		  success: function(data) {
+			alert("POSTed successfully");
+			},
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert("Error");
+			}
+		});
+	});
+});
+
+</script>
+</head>
+<div>
+<button id="getReq">Send HTTP POST request to a AWS</button>
+</div>
+
 </body>
 </html>
