@@ -25,7 +25,7 @@ function postRecipe() {
   $.ajax({
       url: "https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes",
       type: "POST",
-      data: JSON.stringify({"TableName": "Recipes", "Item": {"RecipeName":recipeNameInput, "Ingredients":ingredientsInput, "Directions":preparationInput, "Image":imgInput}}),
+      data: JSON.stringify({"TableName": "Recipes", "Item": {"RecipeName":recipeNameInput, "Ingredients":ingredientsInput, "Directions":preparationInput, "Picture":imgInput}}),
       success: function(data) {
       alert("POSTed successfully");
       },
