@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <body>
 
 <h1>Recipe Assistant</h1>
 <img src="">
 
-<button>Add recipe</button>
+<a href="add_recipe.html">Add Recipe</a>
 <div><input type="text" name="fname"> <button>Search for recipe</button></div>
 <button>Settings</button>
 
 <h2>Recipe Table</h2>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
     $("#getReq").click(function(){
@@ -22,17 +22,16 @@ $(document).ready(function(){
       });
     });
 </script>
-</head>
+
 <div>
   <br>
-<button id="getReq">Send HTTP GET request to a AWS and get result</button>
-<br>
+    <button id="getReq">Send HTTP GET request to a AWS and get result</button>
+  <br>
 </div>
 <div id="result">
   Result
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
 	$("#getReq").click(function(){
@@ -49,12 +48,7 @@ $(document).ready(function(){
 		});
 	});
 });
-
 </script>
-</head>
-<div>
-<button id="getReq">Send HTTP POST request to a AWS</button>
-</div>
 
 </body>
 </html>
