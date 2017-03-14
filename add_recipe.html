@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <body>
 
 <h1>Add a recipe</h1>
+<form>
+  Recipe name:<br>
+  <input type="text" id="recipename"><br>
+  Ingredients (one per line):<br>
+  <textarea id="ingredients" cols="40" rows="5"></textarea><br>
+  Preparation Steps (one per line):<br>
+  <textarea id="preparation" cols="40" rows="5"></textarea>
+</form>
+<button onclick="postRecipe()">Submit Recipe</button>
 
-<div>
-  <script>
-  $(document).ready(function(){
-    $("#getReq").click(function(){
-      $.ajax({
-          url: "https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes",
-          type: "POST",
-          data: JSON.stringify({"TableName": "Recipes", "Item": {"RecipeName":"Scrambled Eggs", "Ingredients":"Eggs", "Directions":"Crack Eggs\nScramble Eggs\nCook Eggs"}}),
-          success: function(data) {
-          alert("POSTed successfully");
-          },
-          error: function(xhr, ajaxOptions, thrownError) {
-            alert("Error");
-          }
-        });
-      });
-    });
-  </script>
-<button id="getReq">Send HTTP POST request to a AWS</button>
-</div>
+<script>
+function postRecipe() {
+  var recipeNameInput = $('#recipename').val();
+  var ingredientsInput = $('#ingredients').val();
+  var preparationInput = $('#preparation').val();
+  $.ajax({
+      url: "https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes",
+      type: "POST",
+      data: JSON.stringify({"TableName": "Recipes", "Item": {"RecipeName":recipeNameInput, "Ingredients":ingredientsInput, "Directions":preparationInput}}),
+      success: function(data) {
+      alert("POSTed successfully");
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert("Error");
+      }
+  });
+}
+</script>
 
 </body>
 </html>
