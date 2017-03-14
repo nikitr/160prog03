@@ -5,6 +5,23 @@
 <h1>Add a recipe</h1>
 
 <div>
+  <script>
+  $(document).ready(function(){
+    $("#getReq").click(function(){
+      $.ajax({
+          url: "https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes",
+          type: "POST",
+          data: JSON.stringify({"TableName": "Recipes", "Item": {"RecipeName":"Scrambled Eggs", "Ingredients":"Eggs", "Directions":"Crack Eggs\nScramble Eggs\nCook Eggs"}}),
+          success: function(data) {
+          alert("POSTed successfully");
+          },
+          error: function(xhr, ajaxOptions, thrownError) {
+            alert("Error");
+          }
+        });
+      });
+    });
+  </script>
 <button id="getReq">Send HTTP POST request to a AWS</button>
 </div>
 
