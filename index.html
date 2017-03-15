@@ -19,27 +19,34 @@
 $(document).ready(function() {
   $.get("https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes", function(data, status) {
       var result = data["Items"];
+      var count = 0;
         for (var i = 0; i < result.length; i++) {
-          // saveDirections = result[i].Directions;
-          console.log(result[i].Picture);
+          var ing = result[i].Ingredients.split('\n');
+          var desc = result[i].Directions.split('\n');
           $("table#tbl TBody").append('<tr><td>' + '<img src=" ' + result[i].Picture + ' " width="60px" height="60px">'
             +'</td><td>'
               + result[i].RecipeName
             +'</td><td>'
-              + '<img src="images/ingredients.png" onclick= "toIngredientsPage()" width="65px" height="60px">'
+              + '<img src="images/ingredients.png" onclick="toIngredientsPage(\'' + ing + '\')" width="65px" height="60px">'
             + '</td><td>'
-              + '<img src="images/directions.png" onclick="toRecipePage()" width="80px" height="60px">'
+              + '<img src="images/directions.png" onclick="toRecipePage(\'' + desc + '\')" width="80px" height="60px">'
             +'</td></tr>');
         }
+
+
     });
   });
 
-function toIngredientsPage() {
-   window.location="ingredients.html"
+function toIngredientsPage(ingredients) {
+  console.log(ingredients);
+  sessionStorage.setItem('ingredients', ingredients);
+  window.location="ingredients.html";
 }
 
-function toRecipePage() {
-   window.location="recipe.html"
+function toRecipePage(directions) {
+  console.log(directions);
+  sessionStorage.setItem('directions', directions);
+  window.location="directions.html"
 }
 
 </script>
