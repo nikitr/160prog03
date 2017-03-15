@@ -15,17 +15,24 @@
 <h2>Recipe Table</h2>
 
 <script>
+// var saveDirections = "";
 $(document).ready(function() {
-
   $.get("https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes", function(data, status) {
       var result = data["Items"];
         for (var i = 0; i < result.length; i++) {
+          // saveDirections = result[i].Directions;
           console.log(result[i].Picture);
-          $("table#tbl TBody").append('<tr><td>' + result[i].RecipeName +'</td><td>'+ '<img src="images/ingredients.png" width="60px" height="60px">' +'</td><td>' + '<img src="images/directions.png" width="80px" height="60px">' +'</td><td>' + '<img src=" ' + result[i].Picture + ' " width="60px" height="60px">' +'</td></tr>');
+          var directions = result[i].Directions;
+          $("table#tbl TBody").append('<tr><td>' + '<img src=" ' + result[i].Picture + ' " width="60px" height="60px">' + '</td><td>' + result[i].RecipeName + '</td><td>' + '<img src="images/ingredients.png" width="60px" height="60px">' + '</td><td>' + '<img src="images/directions.png" onClick="getDirections(directions)" width="80px" height="60px">' + '</td></tr>');
         }
     });
   });
-
+function getDirections(directions) {
+  // console.log(saveDirections);
+  sessionStorage.setItem('directions', directions);
+  var x = sessionStorage.getItem('directions');
+  console.log(x);
+}
 </script>
 
 <table id="tbl">
