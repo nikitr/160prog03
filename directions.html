@@ -9,7 +9,6 @@
 <script>
 $(document).ready(function() {
   var x = sessionStorage.getItem('directions').split(',');
-  console.log(x);
 
   for (var i = 0; i < x.length; i++) {
     $("ul#list").append('<li>' + x[i] + '</li>');
