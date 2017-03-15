@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<img src="chef.jpg" height="150" width="100">
+<img src="images/chef.jpg" height="150" width="100">
 
 <a href="add_recipe.html">Add Recipe</a>
 <div><input type="text" name="recipe_search"> <button>Search for recipe</button></div>
@@ -21,7 +21,7 @@ $(document).ready(function() {
       var result = data["Items"];
         for (var i = 0; i < result.length; i++) {
           console.log(result[i].Picture);
-          $("table#tbl TBody").append('<tr><td>' + result[i].RecipeName +'</td><td>'+ result[i].Ingredients +'</td><td>' + result[i].Directions +'</td><td>' + result[i].Picture +'</td></tr>');
+          $("table#tbl TBody").append('<tr><td>' + result[i].RecipeName +'</td><td>'+ '<img src="images/ingredients.png" width="60px" height="60px">' +'</td><td>' + '<img src="images/directions.png" width="80px" height="60px">' +'</td><td>' + '<img src=" ' + result[i].Picture + ' " width="60px" height="60px">' +'</td></tr>');
         }
     });
   });
