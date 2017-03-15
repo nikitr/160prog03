@@ -21,7 +21,7 @@ $(document).ready(function() {
       var result = data["Items"];
         for (var i = 0; i < result.length; i++) {
           console.log(result[i].Picture);
-          $("table#tbl TBody").append('<tr><td>' + result[i].RecipeName +'</td><td>'+ result[i].Ingredients +'</td><td>' + result[i].Directions +'</td><td>' + result[i].Picture +'</td></tr>');
+          $("table#tbl TBody").append('<tr><td>' + '<img src="' + result[i].Picture + '" width="60px" height="60px">' + '</td><td>' + result[i].RecipeName + '</td><td>'+ result[i].Ingredients + '</td><td>' + result[i].Directions + '</td><td>' + '</td></tr>');
         }
     });
   });
@@ -31,10 +31,10 @@ $(document).ready(function() {
 <table id="tbl">
   <thead>
   <tr>
+      <th>Picture</th>
       <th>RecipeName</th>
       <th>Ingredients</th>
       <th>Directions</th>
-      <th>Picture</th>
   </tr>
   </thead>
 <tbody></tbody>
