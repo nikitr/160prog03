@@ -14,46 +14,32 @@
 
 <h2>Recipe Table</h2>
 
-<button id="getReq">Get Table Data</button>
-<div id="result">
-</div>
-
 <script>
 $(document).ready(function() {
-    $("#getReq").click(function() {
-        $.get("https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes", function(data, status) {
-            // alert("Data: " + data + "\nStatus: " + status);
-            var result = data["Items"];
-              for (var i = 0; i < result.length; i++) {
-                console.log(result[i].Picture);
-                $("table#tbl TBody").append('<tr><td>' + result[i].RecipeName +'</td><td>'+ result[i].Ingredients +'</td><td>' + result[i].Directions +'</td><td>' + result[i].Picture +'</td></tr>');
-              }
-            });
-              });
 
-          // $("#result").text("tbl");
-    // });
+  $.get("https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes", function(data, status) {
+      var result = data["Items"];
+        for (var i = 0; i < result.length; i++) {
+          console.log(result[i].Picture);
+          $("table#tbl TBody").append('<tr><td>' + result[i].RecipeName +'</td><td>'+ result[i].Ingredients +'</td><td>' + result[i].Directions +'</td><td>' + result[i].Picture +'</td></tr>');
+        }
+    });
+  });
 
-      });
 </script>
 
-    <table id="tbl">
-      <thead>
-      <tr>
-          <th>RecipeName</th>
-          <th>Ingredients</th>
-          <th>Directions</th>
-          <th>Picture</th>
-      </tr>
-      </thead>
-    <tbody></tbody>  
-  </table>
+<table id="tbl">
+  <thead>
+  <tr>
+      <th>RecipeName</th>
+      <th>Ingredients</th>
+      <th>Directions</th>
+      <th>Picture</th>
+  </tr>
+  </thead>
+<tbody></tbody>
+</table>
 
-<div>
-  <br>
-    <button id="getReq">Send HTTP GET request to a AWS and get result</button>
-  <br>
-</div>
 
 
 </body>
