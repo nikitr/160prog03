@@ -21,7 +21,7 @@ $(document).ready(function() {
       var result = data["Items"];
         for (var i = 0; i < result.length; i++) {
           console.log(result[i].Picture);
-          $("table#tbl TBody").append('<tr><td>' + result[i].RecipeName +'</td><td>'+ '<img src="images/ingredients.png" width="60px" height="60px">' +'</td><td>' + '<img src="images/directions.png" width="80px" height="60px">' +'</td><td>' + '<img src=" ' + result[i].Picture + ' " width="60px" height="60px">' +'</td></tr>');
+          $("table#tbl TBody").append('<tr><td>' + '<img src=" ' + result[i].Picture + ' " width="60px" height="60px">' +'</td><td>'+ result[i].RecipeName +'</td><td>' + '<img src="images/ingredients.png" width="60px" height="60px">' +'</td><td>' + '<img src="images/directions.png" width="80px" height="60px">' +'</td></tr>');
         }
     });
   });
