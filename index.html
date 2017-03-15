@@ -18,7 +18,6 @@
 $(document).ready(function() {
   $.get("https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes", function(data, status) {
       var result = data["Items"];
-      var count = 0;
         for (var i = 0; i < result.length; i++) {
           var ing = result[i].Ingredients.split('\n');
           var desc = result[i].Directions.split('\n');
@@ -28,7 +27,7 @@ $(document).ready(function() {
             +'</td><td>'
               + '<img src="images/ingredients.png" onclick="toIngredientsPage(\'' + ing + '\')" width="65px" height="60px">'
             + '</td><td>'
-              + '<img src="images/directions.png" onclick="toRecipePage(\'' + desc + '\')" width="80px" height="60px">'
+              + '<img src="images/directions.png" onclick="toRecipePage(\'' + result[i].RecipeName + '\')" width="80px" height="60px">'
             +'</td></tr>');
         }
     });
@@ -39,9 +38,10 @@ function toIngredientsPage(ingredients) {
   window.location="ingredients.html";
 }
 
-function toRecipePage(directions) {
-  sessionStorage.setItem('directions', directions);
-  window.location="directions.html"
+function toRecipePage(recipeName) {
+  sessionStorage.setItem('recipeName', recipeName);
+  console.log(recipeName);
+  window.location="recipe.html"
 }
 
 </script>

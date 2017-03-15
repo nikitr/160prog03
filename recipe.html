@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<body>
+
+<script>
+$(document).ready(function() {
+  var x = sessionStorage.getItem('recipeName').split(",");
+  console.log(x);
+
+
+    $.get("https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes", function(data, status) {
+      var result = data["Items"];
+      // console.log(data["Items"]);
+        for (var i = 0; i < result.length; i++) {
+          if (x[0] === result[i].RecipeName) {
+            var image = result[i].Picture;
+            var name = result[i].RecipeName;
+            var ingredients = result[i].Ingredients.split("\n");
+            var directions = result[i].Directions.split("\n");
+
+            document.getElementById("Title").innerHTML=name;
+            document.getElementById('recipeImage').setAttribute('src',image);
+            console.log(image)
+          }
+        }
+
+
+      for (var i = 0; i < ingredients.length; i++) {
+        $("ul#ingredientsList").append('<li>' + ingredients[i] + '</li>');
+      }
+
+      for (var j = 0; j < directions.length; j++) {
+        $("ol#directionList").append('<li>' + directions[j] + '</li>');
+      }
+    });
+});
+</script>
+
+<h1 id="Title"></h1>
+
+<img id="recipeImage" src="neutral.jpg" width="300px" height="300px">  
+
+<ul id="ingredientsList">
+  <h2>Ingredients</h2>
+  <tbody></tbody>
+</ul>
+
+<ol id="directionList">
+  <h2>Directions</h2>
+  <tbody></tbody>
+</ol>
+
+</body>
+</html>
+
