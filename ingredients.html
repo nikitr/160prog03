@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<body>
+
+<h1>Ingredients</h1>
+
+
+<script>
+$(document).ready(function() {
+
+  $.get("https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes", function(data, status) {
+      var result = data["Items"];
+        for (var i = 0; i < result.length; i++) {
+          // console.log(result[i].Ingredients);
+          var elements = result[i].Ingredients.split("\n");
+          console.log(elements);
+          $("ul#list").append('<li>' + result[i].Ingredients + '</li>');
+        }
+    });
+  });
+
+</script>
+
+<ul id="list">
+  <tbody>
+  </tbody>
+</ul>
+
+</body>
+</html>
