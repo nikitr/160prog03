@@ -22,17 +22,26 @@ $(document).ready(function() {
         for (var i = 0; i < result.length; i++) {
           // saveDirections = result[i].Directions;
           console.log(result[i].Picture);
-          var directions = result[i].Directions;
-          $("table#tbl TBody").append('<tr><td>' + '<img src=" ' + result[i].Picture + ' " width="60px" height="60px">' + '</td><td>' + result[i].RecipeName + '</td><td>' + '<img src="images/ingredients.png" width="60px" height="60px">' + '</td><td>' + '<img src="images/directions.png" onClick="getDirections(directions)" width="80px" height="60px">' + '</td></tr>');
+          $("table#tbl TBody").append('<tr><td>' + '<img src=" ' + result[i].Picture + ' " width="60px" height="60px">'
+            +'</td><td>'
+              + result[i].RecipeName
+            +'</td><td>'
+              + '<img src="images/ingredients.png" onclick= "toIngredientsPage()" width="65px" height="60px">'
+            + '</td><td>'
+              + '<img src="images/directions.png" onclick="toRecipePage()" width="80px" height="60px">'
+            +'</td></tr>');
         }
     });
   });
-function getDirections(directions) {
-  // console.log(saveDirections);
-  sessionStorage.setItem('directions', directions);
-  var x = sessionStorage.getItem('directions');
-  console.log(x);
+
+function toIngredientsPage() {
+   window.location="ingredients.html"
 }
+
+function toRecipePage() {
+   window.location="recipe.html"
+}
+
 </script>
 
 <table id="tbl">
