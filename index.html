@@ -2,39 +2,43 @@
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
+  <link href="./stylesheet.css" rel="stylesheet">
+
 <title>Recipe Assistant</title>
 </head>
 <body>
 
-<img src="images/chef.jpg" height="150" width="100">
-
-<a href="add_recipe.html">Add Recipe</a>
-<div><input type="text" name="recipe_search"> <button>Search for recipe</button></div>
-<button>Settings</button>
-
-<h2>Recipe Table</h2>
 
 <script>
-$(document).ready(function() {
-  $.get("https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes", function(data, status) {
-      var result = data["Items"];
-        for (var i = 0; i < result.length; i++) {
-          var ing = result[i].Ingredients.split('\n');
-          var desc = result[i].Directions.split('\n');
-          $("table#tbl TBody").append('<tr><td>' + '<img src=" ' + result[i].Picture + ' " width="60px" height="60px">'
-            +'</td><td>'
-              + result[i].RecipeName
-            +'</td><td>'
-              + '<img src="images/ingredients.png" onclick="toIngredientsPage(\'' + ing + '\')" width="65px" height="60px">'
-            + '</td><td>'
-              + '<img src="images/directions.png" onclick="toRecipePage(\'' + result[i].RecipeName + '\')" width="80px" height="60px">'
-            +'</td></tr>');
-        }
-    });
-  });
 
-function toIngredientsPage(ingredients) {
+  $(document).ready(function() {
+    $.get("https://21dzyztdnh.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate?TableName=Recipes", function(data, status) {
+        var result = data["Items"];
+          for (var i = 0; i < result.length; i++) {
+            var ing = result[i].Ingredients.split('\n');
+            var desc = result[i].Directions.split('\n');
+            var name = result[i].RecipeName;
+            $("table#table TBody").append(
+              '<tr>' +
+                '<td data-title="ID">'+ i +'</td>' +
+                '<td data-title="Image">'+ '<img src=" ' + result[i].Picture + ' " width="60px" height="60px">' + '</td>' +
+                '<td data-title="Name">'+ name + '</td>' +
+                '<td data-title="Ingredients">' +
+                  '<img class ="LinkImage" src="images/ingredients.png" onclick="toIngredientsPage(\'' + ing + ',' + name + '\')" width="50px" height="50px">' +
+                '</td>' +
+                '<td data-title="Directions">' +
+                  '<img class ="LinkImage" src="images/directions.png" onclick="toRecipePage(\'' + name + '\')" width="50px" height="50px">' +
+                '</td>' +
+              '</tr>'
+            );
+          }
+      });
+    });
+
+function toIngredientsPage(ingredients, name) {
   sessionStorage.setItem('ingredients', ingredients);
+  sessionStorage.setItem('RecipeName', name)
   window.location="ingredients.html";
 }
 
@@ -46,19 +50,32 @@ function toRecipePage(recipeName) {
 
 </script>
 
-<table id="tbl">
-  <thead>
-  <tr>
-      <th>Picture</th>
-      <th>RecipeName</th>
-      <th>Ingredients</th>
-      <th>Directions</th>
-  </tr>
-  </thead>
-<tbody></tbody>
-</table>
+<div class="Header">
+  <a class="Logo" href="index.html"> <h1> Recipe Assistant </h1> </a>
+  <div class="SearchBar"> <input type="text" placeholder="Search here..." name="recipe_search"></div>
+  <div class="SettingsButton"> <img class="LinkImage" src="images/settings.png" width="40px" height="40px"> </div>
+  <div class="addDocument"> <a href="add_recipe.html"> <img class="LinkImage" src="images/addDocument.png" width="40px" height="40px"> </a> </div>
+</div>
 
 
+<div id="demo">
+<!-- Responsive table starts here -->
+<div class="table-responsive-vertical shadow-z-1">
+<!-- Table starts here -->
+<table id="table" class="table table-hover table-mc-light-blue">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Picture</th>
+        <th>Recipe Name</th>
+        <th>Ingredients</th>
+        <th>Directions</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
 
 </body>
 </html>

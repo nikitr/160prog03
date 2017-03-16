@@ -3,6 +3,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <body>
 
+<head>
+  <link href="./stylesheet.css" rel="stylesheet">
+</head>
+
 <script>
 $(document).ready(function() {
   var x = sessionStorage.getItem('recipeName').split(",");
@@ -37,20 +41,30 @@ $(document).ready(function() {
 });
 </script>
 
-<h1 id="Title"></h1>
+<div class="Header">
+  <a class="Logo" href="index.html"> Recipe Assistant </a>
+  <div class="SearchBar"> <input type="text" placeholder="Search here..." name="recipe_search"></div>
+  <div class="SettingsButton"> <img class="LinkImage" src="images/settings.png" width="40px" height="40px"> </div>
+  <div class="addDocument"> <a href="add_recipe.html"> <img class="LinkImage" src="images/addDocument.png" width="40px" height="40px"> </a> </div>
+</div>
 
-<img id="recipeImage" src="neutral.jpg" width="300px" height="300px">  
+<div class="RecipeContainer">
 
-<ul id="ingredientsList">
+  <h1 id="Title"></h1>
+
+  <img id="recipeImage" src="neutral.jpg" width="300px" height="300px">
+
   <h2>Ingredients</h2>
-  <tbody></tbody>
-</ul>
+  <ul id="ingredientsList">
+    <tbody></tbody>
+  </ul>
 
-<ol id="directionList">
   <h2>Directions</h2>
-  <tbody></tbody>
-</ol>
+  <ol id="directionList">
+    <tbody></tbody>
+  </ol>
+
+</div>
 
 </body>
 </html>
-

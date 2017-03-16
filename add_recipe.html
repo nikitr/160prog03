@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
+
+  <link href="./recipeStylesheet.css" rel="stylesheet">
+
+</head>
+
 <body>
 
-<h1>Add a recipe</h1>
+<!-- <h1>Add a recipe</h1>
 <form>
   Recipe name:<br>
   <input type="text" id="recipename"><br>
@@ -14,7 +21,37 @@
   Recipe image link
   <textarea id="img" cols="40" rows="5"></textarea><br>
 </form>
-<button onclick="postRecipe()">Submit Recipe</button>
+<button onclick="postRecipe()">Submit Recipe</button> -->
+
+<form>
+  <h2> Recipe Submission Form </h2>
+  <p>
+    Please add your recipe below. For image upload, please use
+    a popular image hosting website, such as imgur.com and paste the the link
+    below
+  </p>
+  <div class="name">
+    <input type="text" id="recipename" placeholder="Recipe Name" />
+  </div>
+  <div class="name">
+    <input type="text" id="img" placeholder="Paste an image link here" />
+  </div>
+
+  <div class="message">
+    <label for="textarea">Ingredients (one per line)</label>
+    <textarea cols="40" rows="8" name="textarea" id="ingredients"></textarea>
+  </div>
+  <div class="message">
+    <label for="textarea">Preparation Steps (one per line)</label>
+    <textarea cols="40" rows="8" name="textarea" id="preparation"></textarea>
+  </div>
+</form>
+<div class="submit">
+  <input type="submit" value="Submit" onclick="postRecipe()">
+</div>
+
+
+
 
 <script>
 function postRecipe() {

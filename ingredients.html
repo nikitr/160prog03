@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<body>
-
-<h1>Ingredients</h1>
-
-
 <script>
 $(document).ready(function() {
   var x = sessionStorage.getItem('ingredients').split(',');
+  var name = sessionStorage.getItem('recipeName');
 
-  for (var i = 0; i < x.length; i++) {
-    $("ul#list").append('<li>' + x[i] + '</li>');
+  for (var i = 0; i < x.length-1; i++) {
+    $("table#table TBody").append('<tr>' +
+      '<td data-title="ID">'+ (i+1) +'</td>' +
+      '<td data-title="Ingredients">'+ x[i] +'</td>' +
+      '</tr>'
+  );
   }
+  $("h1#ingheader").append(' for ' + name);
+
 });
 </script>
 
-<ul id="list">
-  <tbody>
-  </tbody>
-</ul>
+<head>
+  <link href="./stylesheet.css" rel="stylesheet">
+</head>
+
+
+<body>
+<div class="IngredientsContainer">
+  <h1 id="ingheader">Ingredients</h1>
+  <table id="table" class="table table-hover table-mc-light-blue">
+    <thead>
+      <tr>
+        <th>Nr.</th>
+        <th>Ingredients</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
 
 </body>
 </html>
