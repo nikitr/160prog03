@@ -25,7 +25,7 @@
                 '<td data-title="Image">'+ '<img src=" ' + result[i].Picture + ' " width="60px" height="60px">' + '</td>' +
                 '<td data-title="Name">'+ name + '</td>' +
                 '<td data-title="Ingredients">' +
-                  '<img class ="LinkImage" src="images/ingredients.png" onclick="toIngredientsPage(\'' + ing + ',' + name + '\')" width="50px" height="50px">' +
+                  '<img class ="LinkImage" src="images/ingredients.png" onclick="toIngredientsPage(\'' + ing + '\',\'' + name + '\')" width="50px" height="50px">' +
                 '</td>' +
                 '<td data-title="Directions">' +
                   '<img class ="LinkImage" src="images/directions.png" onclick="toRecipePage(\'' + name + '\')" width="50px" height="50px">' +
@@ -38,13 +38,12 @@
 
 function toIngredientsPage(ingredients, name) {
   sessionStorage.setItem('ingredients', ingredients);
-  sessionStorage.setItem('RecipeName', name)
+  sessionStorage.setItem('recipeName', name)
   window.location="ingredients.html";
 }
 
 function toRecipePage(recipeName) {
   sessionStorage.setItem('recipeName', recipeName);
-  console.log(recipeName);
   window.location="recipe.html"
 }
 
