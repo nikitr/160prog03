@@ -6,7 +6,7 @@ $(document).ready(function() {
   var x = sessionStorage.getItem('ingredients').split(',');
   var name = sessionStorage.getItem('recipeName');
 
-  for (var i = 0; i < x.length-1; i++) {
+  for (var i = 0; i < x.length; i++) {
     $("table#table TBody").append('<tr>' +
       '<td data-title="ID">'+ (i+1) +'</td>' +
       '<td data-title="Ingredients">'+ x[i] +'</td>' +
