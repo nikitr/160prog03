@@ -145,14 +145,18 @@ input[type="text"] {
 .IngredientsContainer {
   margin-left: 20px;
   margin-top: 20px;
-  padding: 16px;
-  width: 400px;
+  padding: 40px;
+  width: 100%;
   background-color: White;
+  font-size: 3em;
 }
 
 .IngredientsContainer h1 {
+  font-size: 50px;
+  line-height: 1.5em;
   font-weight: 500;
   margin-top: 0px;
+  margin-bottom: 50px;
 }
 
 .SearchButton {
@@ -165,6 +169,7 @@ input[type="text"] {
   font-weight: 600;
   padding: 5px;
   padding-left: 10px;
+  cursor: pointer;
 }
 
 
@@ -173,7 +178,7 @@ input[type="text"] {
 .table {
   width: 100%;
   max-width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 2em;
   background-color: #fff;
 }
 .table > thead > tr,
@@ -190,7 +195,7 @@ input[type="text"] {
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
   text-align: left;
-  padding: 1.6rem;
+  padding: 1.6em;
   vertical-align: top;
   border-top: 0;
   -webkit-transition: all 0.3s ease;
