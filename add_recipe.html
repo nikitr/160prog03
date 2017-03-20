@@ -64,10 +64,10 @@ function postRecipe() {
       type: "POST",
       data: JSON.stringify({"TableName": "Recipes", "Item": {"RecipeName":recipeNameInput, "Ingredients":ingredientsInput, "Directions":preparationInput, "Picture":imgInput}}),
       success: function(data) {
-      alert("POSTed successfully");
+      alert("Recipe submitted successfully");
       },
       error: function(xhr, ajaxOptions, thrownError) {
-        alert("Error");
+        alert("There was an error with your submission");
       }
   });
 }
